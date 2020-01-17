@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 // import './App.css';
 import './styles/styles.scss';
-import DebtsList from './components/debtsList'
+import DebtsList from './components/debtsList';
 import Header from './components//Header';
 
 import {
@@ -19,7 +19,10 @@ class App extends Component {
 	};
 
 	componentDidMount() {
-		fetch(DebtsUrlCount)
+		fetch(
+			'http://rekrutacja-webhosting.it.krd.pl/api/Recruitment/GetDebtsCount',
+			{ mode: 'no-cors' }
+		)
 			.then(response => response.json())
 			.then(debtsCount => {
 				this.setState({ debtsCount });
@@ -28,7 +31,10 @@ class App extends Component {
 				console.error('Error:', error);
 			});
 
-		fetch(DebtsUrlList)
+		fetch(
+			'http://rekrutacja-webhosting.it.krd.pl/api/Recruitment/GetTopDebts',
+			{ mode: 'no-cors' }
+		)
 			.then(response => response.json())
 			.then(debtsList => {
 				this.setState({ debtsList });
