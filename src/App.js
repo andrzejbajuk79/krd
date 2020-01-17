@@ -24,9 +24,7 @@ class App extends Component {
 			.then(debtsCount => {
 				this.setState({ debtsCount });
 			})
-			.catch(error => {
-				console.error('Error:', error);
-			});
+			.catch(error => {});
 
 		fetch(DebtsUrlList, { mode: 'no-cors' })
 			.then(response => response.json())
@@ -34,17 +32,15 @@ class App extends Component {
 				this.setState({ debtsList });
 				console.log(this.state.debtsList);
 			})
-			.catch(error => {
-				console.error('Error:', error);
-			});
+			.catch(error => {});
 	}
 	setFilter = e => {
 		this.setState({ query: e.target.value });
 		console.log(this.state.query);
 	};
 	inputVal = JSON.stringify(this.state.query);
-	fetchFiltered = async () => {
-		await fetch(DebtsUrlFiltered, {
+	fetchFiltered = () => {
+		fetch(DebtsUrlFiltered, {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',
@@ -53,10 +49,7 @@ class App extends Component {
 			mode: 'no-cors',
 			body: JSON.stringify(this.state.query)
 		})
-			.then(res => {
-				console.log(res.status);
-				return res.clone().json();
-			})
+			.then(res => res.clone().json())
 			.then(data => {
 				console.log(data);
 				this.setState({ debtsList: data });
