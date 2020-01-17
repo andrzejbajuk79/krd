@@ -19,10 +19,7 @@ class App extends Component {
 	};
 
 	componentDidMount() {
-		fetch(
-			'http://rekrutacja-webhosting.it.krd.pl/api/Recruitment/GetDebtsCount',
-			{ mode: 'no-cors' }
-		)
+		fetch(DebtsUrlCount, { mode: 'no-cors' })
 			.then(response => response.json())
 			.then(debtsCount => {
 				this.setState({ debtsCount });
@@ -31,10 +28,7 @@ class App extends Component {
 				console.error('Error:', error);
 			});
 
-		fetch(
-			'http://rekrutacja-webhosting.it.krd.pl/api/Recruitment/GetTopDebts',
-			{ mode: 'no-cors' }
-		)
+		fetch(DebtsUrlList, { mode: 'no-cors' })
 			.then(response => response.json())
 			.then(debtsList => {
 				this.setState({ debtsList });
@@ -56,6 +50,7 @@ class App extends Component {
 				Accept: 'application/json',
 				'Content-Type': 'application/json'
 			},
+			mode: 'no-cors',
 			body: JSON.stringify(this.state.query)
 		})
 			.then(res => {
