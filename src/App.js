@@ -1,26 +1,87 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, Fragment } from 'react';
+// import './App.css';
+import './styles/styles.scss';
+import DebtsList from './components/debtsList'
+import Header from './components//Header';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import {
+	DebtsUrlCount,
+	DebtsUrlFiltered,
+	DebtsUrlList
+} from './components/rootsUrlComponent';
+
+class App extends Component {
+	state = {
+		query: '',
+		debtsList: [],
+		debtsCount: null,
+		data: []
+	};
+
+	componentDidMount() {
+		fetch(DebtsUrlCount)
+			.then(response => response.json())
+			.then(debtsCount => {
+				this.setState({ debtsCount });
+			})
+			.catch(error => {
+				console.error('Error:', error);
+			});
+
+		fetch(DebtsUrlList)
+			.then(response => response.json())
+			.then(debtsList => {
+				this.setState({ debtsList });
+				console.log(this.state.debtsList);
+			})
+			.catch(error => {
+				console.error('Error:', error);
+			});
+	}
+	setFilter = e => {
+		this.setState({ query: e.target.value });
+		console.log(this.state.query);
+	};
+	inputVal = JSON.stringify(this.state.query);
+	fetchFiltered = async () => {
+		await fetch(DebtsUrlFiltered, {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(this.state.query)
+		})
+			.then(res => {
+				console.log(res.status);
+				return res.clone().json();
+			})
+			.then(data => {
+				console.log(data);
+				this.setState({ debtsList: data });
+				// console.log('nowa lista',this.state.debtsList);
+			});
+	};
+
+	render() {
+		return (
+			<div>
+				<Header
+					setFilter={this.setFilter}
+					fetchFiltered={this.fetchFiltered}
+					total={this.state.debtsCount}
+				/>
+
+				<div className="container ">
+					<DebtsList
+						debtsCount={this.state.debtsCount}
+						key={this.state.debtsList.length}
+						debtsList={this.state.debtsList}
+					/>
+				</div>
+			</div>
+		);
+	}
 }
 
 export default App;

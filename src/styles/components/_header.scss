@@ -1,0 +1,33 @@
+.header {
+	display: flex;
+	flex-direction: row;
+	background: $off-black;
+	color: white;
+	margin-bottom: $m-size;
+	padding: $m-size 0;
+	flex-grow: 1;
+}
+
+.header__title {
+	margin-right: 20px;
+	font-size: $l-size;
+	margin: 0;
+}
+.header-search {
+	height: 40px;
+	display: flex;
+	flex-grow: 1;
+}
+.total {
+	color: $off-white;
+	font-size: $m-size;
+	font-weight: 500;
+	margin: 0;
+	padding: $m-size 0;
+}
+
+@media (min-width: $desktop-breakpoint) {
+	.header {
+		margin-bottom: $xl-size;
+	}
+}

@@ -1,0 +1,14 @@
+.debt {
+	display: flex;
+	flex-direction: column;
+}
+
+.debt span,
+.list span {
+	font-size: 3rem;
+	color: black;
+	width: 23vw;
+	display: inline-block;
+	margin: 0 20px;
+	word-break: break-all;
+}
