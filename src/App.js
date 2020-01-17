@@ -19,20 +19,26 @@ class App extends Component {
 	};
 
 	componentDidMount() {
-		fetch(DebtsUrlCount, { mode: 'no-cors' })
+		fetch(
+			DebtsUrlCount
+			// , { mode: 'no-cors' }
+		)
 			.then(response => response.json())
 			.then(debtsCount => {
 				this.setState({ debtsCount });
 			})
-			.catch(error => {});
+			.catch(error => console.log('error', error));
 
-		fetch(DebtsUrlList, { mode: 'no-cors' })
+		fetch(
+			DebtsUrlList
+			// , { mode: 'no-cors' }
+		)
 			.then(response => response.json())
 			.then(debtsList => {
 				this.setState({ debtsList });
 				console.log(this.state.debtsList);
 			})
-			.catch(error => {});
+			.catch(error => console.log('error', error));
 	}
 	setFilter = e => {
 		this.setState({ query: e.target.value });
@@ -46,7 +52,7 @@ class App extends Component {
 				Accept: 'application/json',
 				'Content-Type': 'application/json'
 			},
-			mode: 'no-cors',
+			// mode: 'no-cors',
 			body: JSON.stringify(this.state.query)
 		})
 			.then(res => res.clone().json())
