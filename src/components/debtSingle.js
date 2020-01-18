@@ -27,7 +27,7 @@ export const DebtSingle = ({
 					<span className="list-item">{Address}</span>
 					<span className="list-item">{DocumentType}</span>
 					<span className="list-item">
-						{Price} <span className="list-item__number"> {Number}</span>
+						<span className="list-item__price">{Price} {Number} </span>
 					</span>
 				</div>
 			)}

@@ -2,11 +2,14 @@
 	background: $red;
 	border: none;
 	color: white;
-	font-size: $font-size-large;
+	font-size: $font-size-small;
 	font-weight: 300;
 	padding: $s-size;
 	display: inline-block;
 	text-decoration: none;
+	@media (min-width: $desktop-breakpoint) {
+		font-size: $font-size-large;
+	}
 }
 
 .button--list {

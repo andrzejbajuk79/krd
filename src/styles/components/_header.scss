@@ -29,13 +29,15 @@
 }
 
 .header-form__input {
-	min-width: 40rem;
+	min-width: 20rem;
 	display: flex;
+	font-size:  $font-size-small;
 	padding: $s-size;
 	margin-bottom: $s-size;
 	@media (min-width: $desktop-breakpoint) {
 		margin-bottom: 0;
-		font-size: $m-size;
+		font-size:  $font-size-medium;
+		min-width: 40rem;
 	}
 }
 
@@ -57,18 +59,18 @@
 }
 .total__header {
 	color: $red;
-	font-size: $m-size;
+	font-size: $font-size-small;
 	margin: 0 $s-size 0 0;
 	@media (min-width: $desktop-breakpoint) {
 		text-align: right;
 		margin: $s-size 0 0 $s-size;
-		font-size: $l-size;
+		font-size:  $font-size-large;
 	}
 }
 .total__count {
 	margin: $s-size 0 0 0;
 	color: white;
-	font-size: $l-size;
+	font-size: $m-size;
 	@media (min-width: $desktop-breakpoint) {
 		margin: 0 0 $l-size $s-size;
 		font-size: $l-size;
