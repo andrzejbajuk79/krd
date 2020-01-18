@@ -1,16 +1,35 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Header = (props) => (
-	<div className="header">
-		<div className='header-search'>	<h2 className="header__title">szukaj</h2>
-			<input onChange={e=>props.setFilter(e)} className="header-input" type="text" />
+const Header = props => (
+	<header className="header">
+		<div className="content-container">
+			<div className="header__content">
+				<div className="header-search">
+					<span>PODAJ NUMER SPRAWY,NAZWĘ LUB NIP DŁUŻNIKA</span>
+					<form onSubmit={props.onSubmit} className="header-form">
+						<input
+							minLength="3"
+							onChange={e => props.setFilter(e)}
+							className="header-form__input"
+							type="text"
+							placeholder="Numer sprawy, Nazwa, NIP"
+							autoFocus
+						/>
+						<div className="header-button__action">
+							<button type="submit" className="button">
+								Szukaj
+							</button>
+						</div>
+					</form>
+				</div>
+				<div className="total">
+					<h2 className="total__header"> Całkowita Ilość spraw: </h2>
+					<p className="total__count"> {props.total}</p>
+				</div>
+			</div>
 		</div>
-		<button onClick={props.fetchFiltered}>szukaj</button>
-
-		<h2 className='total'> Total : { props.total} </h2>
-	
-	</div>
+	</header>
 );
 
 export default Header;

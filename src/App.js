@@ -21,7 +21,7 @@ class App extends Component {
 	componentDidMount() {
 		fetch(
 			DebtsUrlCount
-			// , { mode: 'no-cors' }
+			// , {mode: 'no-cors'}
 		)
 			.then(response => response.json())
 			.then(debtsCount => {
@@ -29,14 +29,14 @@ class App extends Component {
 			})
 			.catch(error => console.log('error', error));
 
-		fetch(
+		const initialFetch = fetch(
 			DebtsUrlList
 			// , { mode: 'no-cors' }
 		)
 			.then(response => response.json())
 			.then(debtsList => {
 				this.setState({ debtsList });
-				console.log(this.state.debtsList);
+				console.log('this.state.debtsList', this.state.debtsList);
 			})
 			.catch(error => console.log('error', error));
 	}
@@ -44,23 +44,32 @@ class App extends Component {
 		this.setState({ query: e.target.value });
 		console.log(this.state.query);
 	};
-	inputVal = JSON.stringify(this.state.query);
-	fetchFiltered = () => {
-		fetch(DebtsUrlFiltered, {
-			method: 'POST',
-			headers: {
-				Accept: 'application/json',
-				'Content-Type': 'application/json'
-			},
-			// mode: 'no-cors',
-			body: JSON.stringify(this.state.query)
-		})
-			.then(res => res.clone().json())
-			.then(data => {
-				console.log(data);
-				this.setState({ debtsList: data });
-				// console.log('nowa lista',this.state.debtsList);
-			});
+	inputVal = this.state.query.length;
+
+	
+	onSubmit = e => {
+		console.log('inputVal ',this.state.query.length );
+		if (this.state.query.length  > 2) {
+			e.preventDefault();
+			fetch(DebtsUrlFiltered, {
+				method: 'POST',
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(this.state.query)
+			})
+				.then(res => {
+					return res.clone().json();
+				})
+				.then(data => {
+					console.log(data);
+					this.setState({ debtsList: data });
+					// console.log('nowa lista',this.state.debtsList);
+				});
+		} else {
+			alert('prosze wpisac 3 znaki');
+		}
 	};
 
 	render() {
@@ -68,7 +77,7 @@ class App extends Component {
 			<div>
 				<Header
 					setFilter={this.setFilter}
-					fetchFiltered={this.fetchFiltered}
+					onSubmit={this.onSubmit}
 					total={this.state.debtsCount}
 				/>
 

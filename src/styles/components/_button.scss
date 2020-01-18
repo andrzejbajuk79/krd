@@ -1,0 +1,26 @@
+.button {
+	background: $red;
+	border: none;
+	color: white;
+	font-size: $font-size-large;
+	font-weight: 300;
+	padding: $s-size;
+	display: inline-block;
+	text-decoration: none;
+
+}
+
+.button--list {
+	background: none;
+	color: $red;
+	border: none;
+	cursor: pointer;
+	
+}
+
+.button--secondary {
+	background: #888;
+}
+.space-button {
+	width: 5%;
+}
