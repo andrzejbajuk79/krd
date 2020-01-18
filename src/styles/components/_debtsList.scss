@@ -3,6 +3,9 @@
 	border-bottom: 4px solid darken($off-white, 20%);
 	color: $grey;
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 	padding: $l-size $m-size $s-size 0;
+	@media (min-width: $desktop-breakpoint) {
+		justify-content: space-between;
+	}
 }

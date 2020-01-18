@@ -14,28 +14,7 @@ export const DebtSingle = ({
 	isOpened,
 	...props
 }) => (
-	// <Fragment {...props}>
-	// 	<tr>
-	// 		<th scope="row">{Id}</th>
-	// 		<td>{Name} </td>
-	// 		<td>{Price}</td>
-	// 		<td>{Number}</td>
-	// 		<td
-	// 		onClick={openUser}
-	// 		className='button'>{isOpened && open ? 'Ukryj' : 'Pokaz'}</td>
-	// 	</tr>
-	// 	{isOpened && open && (
-
-	// 			<p>
-	// 				adress: {Address} {Price}
-	// 				<hr></hr>
-	// 			</p>
-
-	// 	)}
-
-	// </Fragment>
-
-	<div className="list">
+	<div className="list" onClick={openUser}>
 		<div className="list-items" {...props}>
 			<div className="list-items_row">
 				<span className="list-item">{Name}</span>
@@ -48,14 +27,13 @@ export const DebtSingle = ({
 					<span className="list-item">{Address}</span>
 					<span className="list-item">{DocumentType}</span>
 					<span className="list-item">
-						{Price}        <span className="list-item__number"> {Number}</span>
+						{Price} <span className="list-item__number"> {Number}</span>
 					</span>
-					
 				</div>
 			)}
 		</div>
 
-		<span className="button button--list" onClick={openUser}>
+		<span className="button button--list">
 			{isOpened && toggleOpen ? 'Mniej' : 'Wiecej'}
 		</span>
 	</div>

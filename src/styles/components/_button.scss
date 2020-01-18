@@ -7,7 +7,6 @@
 	padding: $s-size;
 	display: inline-block;
 	text-decoration: none;
-
 }
 
 .button--list {
@@ -15,9 +14,10 @@
 	color: $red;
 	border: none;
 	cursor: pointer;
-	
 }
-
+.header-button:hover {
+	background: $dark-blue;
+}
 .button--secondary {
 	background: #888;
 }

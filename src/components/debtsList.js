@@ -34,13 +34,16 @@ class DebtsList extends Component {
 	render() {
 		return (
 			<div className="content-container ">
-				<div className="show-for-desktop ">
-					<div className="list-header ">
-						<span>Nazwisko</span> <span>Numer</span>
-						<span>Kwota</span> <span className="space-button"></span>
-					</div>
+				<div className="list-header ">
+					<span>Nazwisko</span> <span>Numer</span>
+					<span>Kwota</span> <span className="space-button"></span>
 				</div>
-				{this.props.debtsList.length === 0  ?<h1>Nic nie znaleziono</h1>: this.props.debtsList.map(this.renderUser)}
+
+				{this.props.debtsList.length === 0 ? (
+					<h1>Nic nie znaleziono</h1>
+				) : (
+					this.props.debtsList.map(this.renderUser)
+				)}
 			</div>
 		);
 	}

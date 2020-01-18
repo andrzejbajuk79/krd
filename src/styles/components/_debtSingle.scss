@@ -8,36 +8,46 @@
 	transition: background 0.3s ease;
 	&:hover {
 		background: $light-blue;
-  }
-  @media (min-width: $desktop-breakpoint) {
+	}
+	@media (min-width: $desktop-breakpoint) {
 		flex-direction: row;
 	}
-  
 }
 .list-items {
 	flex-grow: 1;
 	display: flex;
+	
 	flex-direction: column;
 	padding: $s-size;
+	cursor: pointer;
 }
 .list-items_row {
 	display: flex;
-	flex-direction: column;
-  justify-content: space-between;
-  @media (min-width: $desktop-breakpoint) {
+	flex-direction: row;
+	justify-content: space-between;
+	@media (min-width: $desktop-breakpoint) {
 		flex-direction: row;
 	}
-
 }
 .list-items_row:first-child {
-  margin-bottom: $s-size;
-  @media (min-width: $desktop-breakpoint) {
-    margin-bottom: $l-size;
+	margin-bottom: $s-size;
+	@media (min-width: $desktop-breakpoint) {
+		margin-bottom: $l-size;
 	}
 }
 .list-item {
 	width: 33%;
+	margin: 0 $xl-size;
+	margin-left: 0;
+	@media (min-width: $desktop-breakpoint) {
+		margin: 0;
+	}
+	
+	
 }
 .list-item__number {
-	padding-left: 13rem;
+	padding-left: 0;
+	@media (min-width: $desktop-breakpoint) {
+		padding-left: 13rem;
+	}
 }

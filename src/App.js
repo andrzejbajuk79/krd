@@ -3,6 +3,7 @@ import React, { Component, Fragment } from 'react';
 import './styles/styles.scss';
 import DebtsList from './components/debtsList';
 import Header from './components//Header';
+import LoadingSpinner from './components/LoadingSpinner';
 
 import {
 	DebtsUrlCount,
@@ -12,83 +13,95 @@ import {
 
 class App extends Component {
 	state = {
+		loading: 'true',
 		query: '',
 		debtsList: [],
+		initialDebtsList: [],
 		debtsCount: null,
 		data: []
 	};
 
 	componentDidMount() {
-		fetch(
-			DebtsUrlCount
-			// , {mode: 'no-cors'}
-		)
+		const initial = fetch(DebtsUrlCount)
 			.then(response => response.json())
 			.then(debtsCount => {
 				this.setState({ debtsCount });
 			})
-			.catch(error => console.log('error', error));
+			.catch(error => console.log('error1', error));
 
-		const initialFetch = fetch(
-			DebtsUrlList
-			// , { mode: 'no-cors' }
-		)
+		fetch(DebtsUrlList)
 			.then(response => response.json())
 			.then(debtsList => {
-				this.setState({ debtsList });
-				console.log('this.state.debtsList', this.state.debtsList);
+				this.setState({ debtsList, initialDebtsList: debtsList });
 			})
-			.catch(error => console.log('error', error));
+			.catch(error => console.log('error2', error));
 	}
 	setFilter = e => {
-		this.setState({ query: e.target.value });
-		console.log(this.state.query);
-	};
-	inputVal = this.state.query.length;
+		console.log(e.target.value);
 
-	
+		this.setState({
+			query: e.target.value
+		});
+	};
+
 	onSubmit = e => {
-		console.log('inputVal ',this.state.query.length );
-		if (this.state.query.length  > 2) {
-			e.preventDefault();
-			fetch(DebtsUrlFiltered, {
-				method: 'POST',
-				headers: {
-					Accept: 'application/json',
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify(this.state.query)
-			})
-				.then(res => {
-					return res.clone().json();
+		e.preventDefault();
+		this.setState(
+			{
+				loading: false
+			},
+			() => {
+				// if (this.state.query.length > 2) {
+				fetch(DebtsUrlFiltered, {
+					method: 'POST',
+					headers: {
+						Accept: 'application/json',
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(this.state.query)
 				})
-				.then(data => {
-					console.log(data);
-					this.setState({ debtsList: data });
-					// console.log('nowa lista',this.state.debtsList);
-				});
-		} else {
-			alert('prosze wpisac 3 znaki');
-		}
+					.then(res => {
+						return res.clone().json();
+					})
+					.then(data => {
+						this.setState({
+							loading: true,
+							debtsList: data
+						});
+					})
+					.catch(error => {
+						this.setState({
+							loading: true,
+							debtsList:this.state.initialDebtsList
+						});
+						console.log('error3', this.state.initialDebtsList)
+						
+					});
+			}
+		);
 	};
-
 	render() {
+		const { debtsCount, loading } = this.state;
 		return (
-			<div>
+			<Fragment>
 				<Header
+					query={this.query}
 					setFilter={this.setFilter}
 					onSubmit={this.onSubmit}
-					total={this.state.debtsCount}
+					total={debtsCount}
 				/>
-
-				<div className="container ">
-					<DebtsList
-						debtsCount={this.state.debtsCount}
-						key={this.state.debtsList.length}
-						debtsList={this.state.debtsList}
-					/>
-				</div>
-			</div>
+				{!loading ? (
+					<LoadingSpinner />
+				) : (
+					<div className="container ">
+						<DebtsList
+							debtsCount={this.state.debtsCount}
+							key={this.state.debtsList.length}
+							debtsList={this.state.debtsList}
+						/>
+					</div>
+				)}
+			</Fragment>
 		);
 	}
 }

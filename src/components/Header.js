@@ -10,6 +10,8 @@ const Header = props => (
 					<form onSubmit={props.onSubmit} className="header-form">
 						<input
 							minLength="3"
+							name='search'
+							value={props.query}
 							onChange={e => props.setFilter(e)}
 							className="header-form__input"
 							type="text"
@@ -17,7 +19,7 @@ const Header = props => (
 							autoFocus
 						/>
 						<div className="header-button__action">
-							<button type="submit" className="button">
+							<button type="submit" className="button header-button">
 								Szukaj
 							</button>
 						</div>
