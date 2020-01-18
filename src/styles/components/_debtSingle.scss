@@ -38,15 +38,17 @@
 .list-item {
 	width: 100%;
 	margin: 0 $xl-size;
+	font-size: $font-size-small;
 	margin-left: 0;
 	@media (min-width: $desktop-breakpoint) {
+		font-size: $font-size-medium;
 		margin: 0;
 		width: 33%;
 	}
 }
 .list-item__number {
 	padding-left: 0;
-	@media (max-width: $desktop-breakpoint2) {
+	@media (max-width: $desktop-breakpoint) {
 		padding-left: 0;
 	}
 }

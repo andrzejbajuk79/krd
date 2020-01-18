@@ -29,7 +29,7 @@
 }
 
 .header-form__input {
-	min-width: 20rem;
+	min-width: 30rem;
 	display: flex;
 	font-size:  $font-size-small;
 	padding: $s-size;
@@ -37,7 +37,7 @@
 	@media (min-width: $desktop-breakpoint) {
 		margin-bottom: 0;
 		font-size:  $font-size-medium;
-		min-width: 40rem;
+	
 	}
 }
 
