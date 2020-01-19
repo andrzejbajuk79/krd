@@ -17,10 +17,10 @@ export const DebtSingle = ({
 	<div className="list" onClick={openUser}>
 		<div className="list-items" {...props}>
 			<div className=" show-for-desktop">
-				<div className=" list-items_row">
-					<span className="list-item">{Name}</span>
-					<span className="list-item">{NIP}</span>
-					<span className="list-item">{Value}</span>
+				<div id="first_row" className=" list-items_row">
+					<span id='name'  className="list-item">{Name}</span>
+					<span  id='nip' className="list-item">{NIP}</span>
+					<span id='value' className="list-item">{Value}</span>
 				</div>
 			</div>
 			<div className=" show-for-mobile">
@@ -40,17 +40,17 @@ export const DebtSingle = ({
 				<Fragment>
 					<div className=" show-for-desktop">
 						<div className="list-items_row">
-							<span className="list-item">{Address}</span>
-							<span className="list-item">{DocumentType}</span>
-							<span className="list-item">{Price} {Number}</span>					
+							<span id='address' className="list-item">{Address}</span>
+							<span  id='docType' className="list-item">{DocumentType}</span>
+							<span id='price' className="list-item">{Price}  <span id='number'>- -{Number}</span></span>					
 						</div>
 					</div>
 					<div className=" show-for-mobile">
 						<div className="list-items_row">
 							<span className="list-item"><b>Adres</b>: {Address}</span>
-							<span className="list-item"><b>Rodzaj/Typ dokumentu</b>: {DocumentType}</span>
-							<span className="list-item"><b>Kwota zadłużenia</b>: {Price}</span>
-							<span className="list-item"><b>Number</b>: {Number}</span>
+							<span  className="list-item"><b>Rodzaj/Typ dokumentu</b>: {DocumentType}</span>
+							<span  className="list-item"><b>Kwota zadłużenia</b>: {Price}</span>
+							<span  className="list-item"><b>Number</b>: {Number}</span>
 						</div>
 					</div>
 				</Fragment>
