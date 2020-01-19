@@ -31,13 +31,12 @@
 .header-form__input {
 	min-width: 30rem;
 	display: flex;
-	font-size:  $font-size-small;
+	font-size: $font-size-small;
 	padding: $s-size;
 	margin-bottom: $s-size;
 	@media (min-width: $desktop-breakpoint) {
 		margin-bottom: 0;
-		font-size:  $font-size-medium;
-	
+		font-size: $font-size-medium;
 	}
 }
 
@@ -64,7 +63,7 @@
 	@media (min-width: $desktop-breakpoint) {
 		text-align: right;
 		margin: $s-size 0 0 $s-size;
-		font-size:  $font-size-large;
+		font-size: $font-size-large;
 	}
 }
 .total__count {

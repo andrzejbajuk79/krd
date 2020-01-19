@@ -16,25 +16,31 @@
 .list-items {
 	flex-grow: 1;
 	display: flex;
-
+	padding: 0;
 	flex-direction: column;
-	padding: $s-size;
 	cursor: pointer;
+	@media (min-width: $desktop-breakpoint) {
+		padding: $s-size;
+	}
 }
 .list-items_row {
 	display: flex;
+	margin-bottom: 0;
+	width: 115%;
 	flex-direction: column;
 	justify-content: space-between;
 	@media (min-width: $desktop-breakpoint) {
 		flex-direction: row;
+		margin-bottom: 0 $l-size;
+		
+	}
+	>:last-child {
+		// color: green;
 	}
 }
-.list-items_row:first-child {
-	margin-bottom: $s-size;
-	@media (min-width: $desktop-breakpoint) {
-		margin-bottom: $l-size;
-	}
-}
+// .list-items_row:first-child {
+// 	margin-bottom: $s-size;
+// }
 .list-item {
 	width: 100%;
 	margin: 0 $xl-size;
@@ -46,13 +52,5 @@
 		width: 33%;
 	}
 }
-.list-item__number {
-	padding-left: 0;
-	@media (max-width: $desktop-breakpoint) {
-		padding-left: 0;
-	}
-}
-.list-item__price {
-	display: flex;
-	flex-direction: row;
-}
+
+

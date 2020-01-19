@@ -10,7 +10,7 @@ const Header = props => (
 					<form onSubmit={props.onSubmit} className="header-form">
 						<input
 							minLength="3"
-							name='search'
+							name="search"
 							value={props.query}
 							onChange={e => props.setFilter(e)}
 							className="header-form__input"
@@ -25,9 +25,12 @@ const Header = props => (
 						</div>
 					</form>
 				</div>
-				<div className="total">
-					<h2 className="total__header"> Całkowita Ilość spraw: </h2>
-					<p className="total__count"> {props.total}</p>
+				<div className="show-for-desktop ">
+					{' '}
+					<div className="total">
+						<h2 className="total__header"> Całkowita Ilość spraw: </h2>
+						<p className="total__count"> {props.total}</p>
+					</div>
 				</div>
 			</div>
 		</div>

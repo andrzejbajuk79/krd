@@ -34,9 +34,14 @@ class DebtsList extends Component {
 	render() {
 		return (
 			<div className="content-container ">
-				<div className="list-header ">
-					<span>Nazwisko</span> <span>Numer</span>
-					<span>Kwota</span> <span className="space-button"></span>
+				<div className="show-for-desktop">
+					<div className='list-header__frame'>
+						<div className="list-header">
+							<span>Nazwisko</span>
+							<span>Numer</span>
+							<span>Kwota</span>
+						</div>
+					</div>
 				</div>
 
 				{this.props.debtsList.length === 0 ? (

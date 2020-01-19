@@ -1,7 +1,6 @@
 .show-for-mobile {
 	@media (min-width: $desktop-breakpoint) {
 		display: none;
-		color:red;
 	}
 }
 .show-for-desktop {

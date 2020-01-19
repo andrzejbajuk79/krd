@@ -16,20 +16,44 @@ export const DebtSingle = ({
 }) => (
 	<div className="list" onClick={openUser}>
 		<div className="list-items" {...props}>
-			<div className="list-items_row">
-				<span className="list-item">{Name}</span>
-				<span className="list-item">{NIP}</span>
-				<span className="list-item">{Value}</span>
+			<div className=" show-for-desktop">
+				<div className=" list-items_row">
+					<span className="list-item">{Name}</span>
+					<span className="list-item">{NIP}</span>
+					<span className="list-item">{Value}</span>
+				</div>
 			</div>
-
-			{isOpened && toggleOpen && (
+			<div className=" show-for-mobile">
 				<div className="list-items_row">
-					<span className="list-item">{Address}</span>
-					<span className="list-item">{DocumentType}</span>
 					<span className="list-item">
-						<span className="list-item__price">{Price} {Number} </span>
+						<b>Nazwisko </b>: {Name}
+					</span>
+					<span className="list-item">
+						<b>NIP</b>: {NIP}
+					</span>
+					<span className="list-item">
+						<b>Kwota</b>: {Value}
 					</span>
 				</div>
+			</div>
+			{isOpened && toggleOpen && (
+				<Fragment>
+					<div className=" show-for-desktop">
+						<div className="list-items_row">
+							<span className="list-item">{Address}</span>
+							<span className="list-item">{DocumentType}</span>
+							<span className="list-item">{Price} {Number}</span>					
+						</div>
+					</div>
+					<div className=" show-for-mobile">
+						<div className="list-items_row">
+							<span className="list-item"><b>Adres</b>: {Address}</span>
+							<span className="list-item"><b>Rodzaj/Typ dokumentu</b>: {DocumentType}</span>
+							<span className="list-item"><b>Kwota zadłużenia</b>: {Price}</span>
+							<span className="list-item"><b>Number</b>: {Number}</span>
+						</div>
+					</div>
+				</Fragment>
 			)}
 		</div>
 
