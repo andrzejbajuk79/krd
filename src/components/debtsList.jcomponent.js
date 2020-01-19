@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { DebtSingle } from './debtSingle';
+import { DebtSingle } from './debtSingle.component';
 
 class DebtsList extends Component {
 	state = {

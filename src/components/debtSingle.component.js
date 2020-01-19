@@ -99,7 +99,7 @@ export const DebtSingle = ({
 		</div>
 
 		<span className="button button--list">
-			{isOpened && toggleOpen ? 'Mniej' : 'Wiecej'}
+			{isOpened && toggleOpen ? 'MNIEJ' : 'WIĘCEJ'}
 		</span>
 	</div>
 );

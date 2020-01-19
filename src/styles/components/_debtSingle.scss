@@ -49,13 +49,14 @@
 	position: relative;
 	line-height: 1.2;
 	width: 100%;
-	padding: 0;
-	margin: 0 $xl-size;
+	//  margin: 0 $xl-size;
 	font-size: $font-size-xsmall;
+	padding: 0;
 	margin-left: 0;
 	@media (min-width: $desktop-breakpoint) {
 		font-size: $font-size-medium;
-		margin: 0;
+		padding: 0 $m-size $m-size 0;
+
 		width: 30%;
 	}
 }
@@ -130,3 +131,6 @@
 	left: 0;
 	top: -$xs-size;
 }
+// #name,#value,#address,#price,#number {
+// 	border: 1px solid black;
+// }

@@ -1,15 +1,15 @@
 import React, { Component, Fragment } from 'react';
 // import './App.css';
 import './styles/styles.scss';
-import DebtsList from './components/debtsList';
-import Header from './components//Header';
-import LoadingSpinner from './components/LoadingSpinner';
+import DebtsList from './components/debtsList.jcomponent';
+import Header from './components/Header.jcomponent';
+import LoadingSpinner from './components/LoadingSpinner.jcomponent';
 
 import {
 	DebtsUrlCount,
 	DebtsUrlFiltered,
 	DebtsUrlList
-} from './components/rootsUrlComponent';
+} from './components/rootsUrlComponent.jcomponent';
 
 class App extends Component {
 	state = {
@@ -21,8 +21,9 @@ class App extends Component {
 		data: []
 	};
 
+
 	componentDidMount() {
-		const initial = fetch(DebtsUrlCount)
+	fetch(DebtsUrlCount)
 			.then(response => response.json())
 			.then(debtsCount => {
 				this.setState({ debtsCount });
@@ -43,6 +44,11 @@ class App extends Component {
 			query: e.target.value
 		});
 	};
+	componentDidUpdate(prevProps,prevState) {
+		console.log('update',prevState);
+		console.log('update',prevProps);
+		
+	}
 
 	onSubmit = e => {
 		e.preventDefault();
@@ -72,10 +78,9 @@ class App extends Component {
 					.catch(error => {
 						this.setState({
 							loading: true,
-							debtsList:this.state.initialDebtsList
+							debtsList: this.state.initialDebtsList
 						});
-						console.log('error3', this.state.initialDebtsList)
-						
+						console.log('error3', this.state.initialDebtsList);
 					});
 			}
 		);
