@@ -42,7 +42,8 @@ export const DebtSingle = ({
 						<div className="list-items_row">
 							<span id='address' className="list-item">{Address}</span>
 							<span  id='docType' className="list-item">{DocumentType}</span>
-							<span id='price' className="list-item">{Price}  <span id='number'>- -{Number}</span></span>					
+							<span id='price' className="list-item">{Price} </span>	
+							<span id='number' className="list-item">{Number}</span>				
 						</div>
 					</div>
 					<div className=" show-for-mobile">

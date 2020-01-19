@@ -26,13 +26,14 @@
 		padding: $s-size;
 	}
 }
-#first_row{
+#first_row {
 	padding: $s-size 0 $l-size 0;
 }
 .list-items_row {
 	display: flex;
 
 	flex-direction: column;
+	align-items:center;
 	margin-bottom: 0;
 	width: 115%;
 
@@ -45,7 +46,9 @@
 
 .list-item {
 	position: relative;
+	line-height: 1.2;
 	width: 100%;
+	padding: 0 $s-size;
 	margin: 0 $xl-size;
 	font-size: $font-size-xsmall;
 	margin-left: 0;
@@ -56,33 +59,15 @@
 		width: 33%;
 	}
 }
-#number {
-	display: inline;
-}
-#name:before {
-	content: '';
-	position: absolute;
-	width: 30%;
-	border-bottom: 1px solid darken($off-white, 15%);
-	left: 0px;
-	top: 0;
-}
+
 
 #name::after {
 	content: 'DŁUŻNIK';
 	font-size: 9px;
 	font-style: italic;
 	position: absolute;
-	left: 0px;
-	top: -13px;
-}
-#nip:before {
-	content: '';
-	position: absolute;
-	width: 20%;
-	border-bottom: 1px solid darken($off-white, 15%);
-	left: 0px;
-	top: 0;
+	left: 0;
+	top: -$xs-size;
 }
 
 #nip::after {
@@ -90,16 +75,8 @@
 	font-size: 9px;
 	font-style: italic;
 	position: absolute;
-	left: 0px;
-	top: -13px;
-}
-#value:before {
-	content: '';
-	position: absolute;
-	width: 30%;
-	border-bottom: 1px solid darken($off-white, 15%);
-	left: 0px;
-	top: 0;
+	left: 0;
+	top: -$xs-size;
 }
 
 #value::after {
@@ -107,84 +84,52 @@
 	font-size: 9px;
 	font-style: italic;
 	position: absolute;
-	left: 0px;
-	top: -13px;
+	left: 0;
+	top: -$xs-size;
 }
-
-#address:before {
-	content: '';
-	position: absolute;
-	width: 30%;
-	border-bottom: 1px solid darken($off-white, 15%);
-	left: 0px;
-	top: 0;
+#address {
+line-height: 1.2;
 }
-
 #address::after {
 	content: 'ADRES';
 	font-size: 9px;
 	font-style: italic;
 	position: absolute;
 	left: 0px;
-	top: -13px;
-}
-
-#docType:before {
-	content: '';
-	position: absolute;
-	width: 50%;
-	border-bottom: 1px solid darken($off-white, 15%);
-	left: 0px;
-	top: 0;
+	top: -$xs-size;
 }
 
 #docType::after {
-	content: 'RODZAJ TYP DOKUMENTU STANOWIĄCY PODSTAWĘ DLA WIERZYTELNOŚCI';
+	content: 'RODZAJ/TYP DOKUMENTU STANOWIĄCY PODSTAWĘ DLA WIERZYTELNOŚCI';
 	font-size: 9px;
-	margin:0;
+	margin: 0;
 	padding: 0;
 	line-height: 1.2;
 	font-style: italic;
 	position: absolute;
 	left: 0px;
-	top: -20px;
-	width: 40%;
+	top: -$l-size;
+	width: 100%;
 }
-
-#price:before {
-	content: '';
-	position: absolute;
-	width: 20%;
-	border-bottom: 1px solid darken($off-white, 15%);
-	left: -10px;
-	top: 0;
+#price {
+	width: 20%
 }
-
 #price::after {
 	content: 'CENA ZADŁUŻENIA';
 	font-size: 9px;
 	font-style: italic;
 	position: absolute;
 	left: -10px;
-	top: -13px;
+	top: -$xs-size;
 }
-
-#number:before {
-	content: '';
-	position: absolute;
-	width: 20%;
-	border-bottom: 1px solid darken($off-white, 15%);
-	left: 100px;
-	top: 0;
+#number {
+	width: 40%
 }
-
 #number::after {
 	content: 'NUMBER';
 	font-size: 9px;
 	font-style: italic;
 	position: absolute;
-	left: 100px;
-	top: -13px;
+	left: 0;
+	top: -$xs-size;
 }
-
-
