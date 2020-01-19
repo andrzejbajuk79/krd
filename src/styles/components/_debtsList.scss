@@ -1,13 +1,12 @@
 .list-header {
-
 	width: 70%;
 	background: $off-white;
 	color: $grey;
 	display: flex;
 	justify-content: space-between;
 	padding: $l-size $m-size $s-size 0;
-
 }
 .list-header__frame {
 	border-bottom: 4px solid darken($off-white, 20%);
+	background: $off-white;
 }
