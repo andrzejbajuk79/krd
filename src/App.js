@@ -22,18 +22,7 @@ class App extends Component {
 	};
 
 	componentWillMount(prevState, prevProps) {
-		// fetch(DebtsUrlCount)
-		// 	.then(response => response.json())
-		// 	.then(debtsCount => {
-		// 		this.setState({ debtsCount });
-		// 	})
-		// 	.catch(error => console.log('error1', error));
-		// fetch(DebtsUrlList)
-		// 	.then(response => response.json())
-		// 	.then(debtsList => {
-		// 		this.setState({ debtsList });
-		// 	})
-		// 	.catch(error => console.log('error2', error));
+
 	}
 	setFilter = e => {
 		this.setState({

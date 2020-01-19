@@ -50,7 +50,7 @@
 	line-height: 1.2;
 	width: 100%;
 	//  margin: 0 $xl-size;
-	font-size: $font-size-xsmall;
+	font-size: $font-size-small;
 	padding: 0;
 	margin-left: 0;
 	@media (min-width: $desktop-breakpoint) {
@@ -65,44 +65,50 @@
 	content: 'DŁUŻNIK';
 	font-size: 9px;
 	font-style: italic;
+	color: $light-grey;
 	position: absolute;
 	left: 0;
-	top: -$xs-size;
+	top: -$s-size;
 }
 
 #nip::after {
 	content: 'NIP';
 	font-size: 9px;
 	font-style: italic;
+	color: $light-grey;
 	position: absolute;
 	left: 0;
-	top: -$xs-size;
+	top: -$s-size;
 }
 
 #value::after {
 	content: 'KWOTA ZADŁUŻENIA';
-	font-size: 9px;
+	font-size: $font-size-xsmall;
 	font-style: italic;
+	color: $light-grey;
 	position: absolute;
 	left: 0;
-	top: -$xs-size;
+	top: -$s-size;
 }
 
 #address::after {
 	content: 'ADRES';
-	font-size: 9px;
+	font-size: $font-size-xsmall;
 	font-style: italic;
+	color: $light-grey;
 	position: absolute;
 	left: 0px;
-	top: -$xs-size;
+	top: -$s-size;
+	color: $light-grey;
 }
 
 #docType::after {
 	content: 'RODZAJ/TYP DOKUMENTU STANOWIĄCY PODSTAWĘ DLA WIERZYTELNOŚCI';
-	font-size: 9px;
+	font-size: 0.8rem;
+	color: $light-grey;
 	margin: 0;
 	padding: 0;
-	line-height: 1.2;
+	line-height: 1.1;
 	font-style: italic;
 	position: absolute;
 	left: 0px;
@@ -114,22 +120,24 @@
 }
 #price::after {
 	content: 'CENA ZADŁUŻENIA';
-	font-size: 9px;
+	font-size: $font-size-xsmall;
 	font-style: italic;
+	color: $light-grey;
 	position: absolute;
-	left: -10px;
-	top: -$xs-size;
+	left: 0;
+	top: -$s-size;
 }
 #number {
 	width: 40%;
 }
 #number::after {
 	content: 'NUMBER';
-	font-size: 9px;
+	font-size: $font-size-xsmall;
 	font-style: italic;
+	color: $light-grey;
 	position: absolute;
 	left: 0;
-	top: -$xs-size;
+	top: -$s-size;
 }
 // #name,#value,#address,#price,#number {
 // 	border: 1px solid black;
