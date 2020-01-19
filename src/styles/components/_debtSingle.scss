@@ -3,7 +3,7 @@
 	display: flex;
 	border-bottom: 1px solid darken($off-white, 20%);
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: flex-start;
 	align-items: center;
 	transition: background 0.3s ease;
 	&:hover {
@@ -11,10 +11,11 @@
 	}
 	@media (min-width: $desktop-breakpoint) {
 		flex-direction: row;
+		justify-content: space-between;
 	}
 }
 .list-items {
-	flex-grow: 1;
+	width: 100%;
 	display: flex;
 	padding: 0;
 	flex-direction: column;
@@ -25,17 +26,14 @@
 }
 .list-items_row {
 	display: flex;
+
+	flex-direction: column;
 	margin-bottom: 0;
 	width: 115%;
-	flex-direction: column;
-	justify-content: space-between;
 	@media (min-width: $desktop-breakpoint) {
 		flex-direction: row;
 		margin-bottom: 0 $l-size;
-		
-	}
-	>:last-child {
-		// color: green;
+		justify-content: space-between;
 	}
 }
 // .list-items_row:first-child {
@@ -52,5 +50,3 @@
 		width: 33%;
 	}
 }
-
-

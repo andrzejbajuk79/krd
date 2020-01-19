@@ -1,11 +1,13 @@
 .header {
 	background: $blue;
 	margin: 0;
+
 }
 
 .header__content {
 	display: flex;
 	align-items: center;
+	margin-bottom: $xs-size;
 	flex-direction: column;
 	justify-content: space-between;
 	padding: $m-size 0;
