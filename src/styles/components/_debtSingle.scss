@@ -31,9 +31,7 @@
 }
 .list-items_row {
 	display: flex;
-
 	flex-direction: column;
-	align-items:center;
 	margin-bottom: 0;
 	width: 115%;
 
@@ -48,11 +46,10 @@
 	position: relative;
 	line-height: 1.2;
 	width: 100%;
-	padding: 0 $s-size;
+	padding: 0;
 	margin: 0 $xl-size;
 	font-size: $font-size-xsmall;
 	margin-left: 0;
-
 	@media (min-width: $desktop-breakpoint) {
 		font-size: $font-size-medium;
 		margin: 0;
