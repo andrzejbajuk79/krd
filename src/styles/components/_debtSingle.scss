@@ -3,8 +3,7 @@
 	display: flex;
 	border-bottom: 1px solid darken($off-white, 20%);
 	flex-direction: column;
-	justify-content: flex-start;
-	align-items: center;
+	align-items: flex-end;
 	transition: background 0.3s ease;
 	&:hover {
 		background: $light-blue;
@@ -33,7 +32,8 @@
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 0;
-	width: 115%;
+	align-items: flex-end;
+	//  width: 95%;
 
 	@media (min-width: $desktop-breakpoint) {
 		flex-direction: row;
@@ -47,6 +47,7 @@
 	line-height: 1.2;
 	width: 100%;
 	padding: 0;
+
 	margin: 0 $xl-size;
 	font-size: $font-size-xsmall;
 	margin-left: 0;
@@ -84,9 +85,7 @@
 	left: 0;
 	top: -$xs-size;
 }
-#address {
-line-height: 1.2;
-}
+
 #address::after {
 	content: 'ADRES';
 	font-size: 9px;
