@@ -21,33 +21,10 @@ class App extends Component {
 		data: []
 	};
 
-
-	componentDidMount() {
-	fetch(DebtsUrlCount)
-			.then(response => response.json())
-			.then(debtsCount => {
-				this.setState({ debtsCount });
-			})
-			.catch(error => console.log('error1', error));
-
-		fetch(DebtsUrlList)
-			.then(response => response.json())
-			.then(debtsList => {
-				this.setState({ debtsList, initialDebtsList: debtsList });
-			})
-			.catch(error => console.log('error2', error));
-	}
-	setFilter = e => {
-		console.log(e.target.value);
-
-		this.setState({
-			query: e.target.value
-		});
-	};
-	componentDidUpdate(prevProps,prevState) {
-		console.log('update',prevState);
-		console.log('update',prevProps);
-		
+	componentWillMount(prevState, prevProps) {
+		const json = localStorage.getItem('debtsList');
+		const debtsList = JSON.parse(json);
+		this.setState({ debtsList });
 	}
 
 	onSubmit = e => {
@@ -57,7 +34,6 @@ class App extends Component {
 				loading: false
 			},
 			() => {
-				// if (this.state.query.length > 2) {
 				fetch(DebtsUrlFiltered, {
 					method: 'POST',
 					headers: {
@@ -77,14 +53,40 @@ class App extends Component {
 					})
 					.catch(error => {
 						this.setState({
-							loading: true,
-							debtsList: this.state.initialDebtsList
+							loading: true
+							// debtsList: this.state.initialDebtsList
 						});
-						console.log('error3', this.state.initialDebtsList);
+						console.log('error3', error);
 					});
 			}
 		);
 	};
+	componentDidMount() {
+		fetch(DebtsUrlCount)
+			.then(response => response.json())
+			.then(debtsCount => {
+				this.setState({ debtsCount });
+			})
+			.catch(error => console.log('error1', error));
+
+		fetch(DebtsUrlList)
+			.then(response => response.json())
+			.then(debtsList => {
+				this.setState({ debtsList });
+			})
+			.catch(error => console.log('error2', error));
+	}
+	setFilter = e => {
+		this.setState({
+			query: e.target.value
+		});
+	};
+	componentDidUpdate( prevState) {
+		if (prevState.debtsList !== this.state.debtsList) {
+			const json = JSON.stringify(this.state.debtsList);
+			localStorage.setItem('debtsList', json);
+		}
+	}
 	render() {
 		const { debtsCount, loading } = this.state;
 		return (
