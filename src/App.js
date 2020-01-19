@@ -56,7 +56,6 @@ class App extends Component {
 					.catch(error => {
 						this.setState({
 							loading: true
-							// debtsList: this.state.initialDebtsList
 						});
 						console.log('error3', error);
 					});

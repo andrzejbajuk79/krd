@@ -6,16 +6,14 @@ class DebtsList extends Component {
 		openedUser: null,
 		toggleOpen: false
 	};
-	toggleOpen = id => {
-		if (id === this.state.openedUser) {
-			this.setState({ toggleOpen: !this.state.toggleOpen });
-		} else {
-			this.setState({ toggleOpen: true });
-		}
-	};
+
 	openUser = id => () => {
-		this.toggleOpen(id);
-		this.setState({ openedUser: id });
+		// this.toggleOpen(id);
+		if (id === this.state.openedUser) {
+			this.setState({ openedUser: id, toggleOpen: !this.state.toggleOpen });
+		} else {
+			this.setState({ openedUser: id, toggleOpen: true });
+		}
 	};
 
 	renderUser = debt => {
@@ -35,7 +33,7 @@ class DebtsList extends Component {
 		return (
 			<div className="content-container ">
 				<div className="show-for-desktop">
-					<div className='list-header__frame'>
+					<div className="list-header__frame">
 						<div className="list-header">
 							<span>Nazwisko</span>
 							<span>Numer</span>
