@@ -3,7 +3,7 @@
 	display: flex;
 	border-bottom: 1px solid darken($off-white, 20%);
 	flex-direction: column;
-	align-items: flex-end;
+	align-items: center;
 	transition: background 0.3s ease;
 	&:hover {
 		background: $light-blue;
@@ -17,8 +17,9 @@
 .list-items {
 	width: 100%;
 	display: flex;
-	padding: 0;
-
+	padding: 0 ;
+	// align-items: flex-start;
+	// justify-content: center;
 	flex-direction: column;
 	cursor: pointer;
 	@media (min-width: $desktop-breakpoint) {
@@ -32,9 +33,10 @@
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 0;
-	align-items: flex-end;
+	align-items: center;
 	//  width: 95%;
-
+	align-items: flex-start;
+	// justify-content: center;
 	@media (min-width: $desktop-breakpoint) {
 		flex-direction: row;
 		margin-bottom: 0 $l-size;
@@ -46,8 +48,7 @@
 	position: relative;
 	line-height: 1.2;
 	width: 100%;
-	padding: 0;
-
+	padding: 0 ;
 	margin: 0 $xl-size;
 	font-size: $font-size-xsmall;
 	margin-left: 0;
