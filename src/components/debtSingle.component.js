@@ -66,7 +66,9 @@ export const DebtSingle = ({
 							>
 								{DocumentType}
 							</span>
-							<span id="price" className="list-item">
+							<span 
+							id={`${isOpened && toggleOpen ? 'price' : ''}`}
+							className="list-item">
 								{Price}{' '}
 							</span>
 							<span
