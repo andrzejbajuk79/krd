@@ -8,28 +8,29 @@ class DebtsList extends Component {
 	};
 
 	openUser = id => () => {
-		// this.toggleOpen(id);
-		if (id === this.state.openedUser) {
-			this.setState({ openedUser: id, toggleOpen: !this.state.toggleOpen });
+		const { toggleOpen, openedUser } = this.state;
+		if (id === openedUser) {
+			this.setState({ openedUser: id, toggleOpen: !toggleOpen });
 		} else {
 			this.setState({ openedUser: id, toggleOpen: true });
 		}
 	};
 
 	renderUser = debt => {
-		// console.log(debt);
+		const { toggleOpen, openedUser } = this.state;
 		return (
 			<DebtSingle
 				key={debt.Id}
 				{...debt}
-				toggleOpen={this.state.toggleOpen}
-				isOpened={this.state.openedUser === debt.Id}
+				toggleOpen={toggleOpen}
+				isOpened={openedUser === debt.Id}
 				openUser={this.openUser(debt.Id)}
 			/>
 		);
 	};
 
 	render() {
+		const { debtsList } = this.props;
 		return (
 			<div className="content-container ">
 				<div className="show-for-desktop">
@@ -41,11 +42,10 @@ class DebtsList extends Component {
 						</div>
 					</div>
 				</div>
-
-				{this.props.debtsList.length === 0 ? (
+				{debtsList.length === 0 ? (
 					<h1>Nic nie znaleziono</h1>
 				) : (
-					this.props.debtsList.map(this.renderUser)
+					debtsList.map(this.renderUser)
 				)}
 			</div>
 		);

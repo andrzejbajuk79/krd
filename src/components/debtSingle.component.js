@@ -4,7 +4,6 @@ export const DebtSingle = ({
 	Number,
 	Name,
 	Value,
-	sex,
 	NIP,
 	DocumentType,
 	Price,

@@ -60,8 +60,9 @@ class App extends Component {
 			}
 		);
 	};
+
 	componentDidMount() {
-		fetch(DebtsUrlCount)
+	 const countDebt=	fetch(DebtsUrlCount)
 			.then(response => response.json())
 			.then(debtsCount => {
 				this.setState({ debtsCount });
@@ -81,6 +82,7 @@ class App extends Component {
 			localStorage.setItem('debtsList', json);
 		}
 	}
+	
 	render() {
 		const { debtsCount, loading } = this.state;
 
