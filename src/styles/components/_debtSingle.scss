@@ -18,8 +18,6 @@
 	width: 100%;
 	display: flex;
 	padding: 0;
-	// align-items: flex-end;
-	// justify-content: space-between;
 	flex-direction: column;
 	cursor: pointer;
 	@media (min-width: $desktop-breakpoint) {
@@ -34,7 +32,6 @@
 	flex-direction: column;
 	margin-bottom: 0;
 	align-items: center;
-	//  width: 95%;
 	align-items: flex-start;
 	justify-content: flex-end;
 	@media (min-width: $desktop-breakpoint) {
@@ -49,7 +46,6 @@
 	position: relative;
 	line-height: 1.2;
 	width: 100%;
-	//  margin: 0 $xl-size;
 	font-size: $font-size-small;
 	padding: 0;
 	margin-left: 0;
@@ -60,7 +56,7 @@
 	}
 }
 
-#name::after {
+#name:before {
 	content: 'DŁUŻNIK';
 	font-size: 9px;
 	font-style: italic;
@@ -70,7 +66,7 @@
 	top: -$s-size;
 }
 
-#nip::after {
+#nip:before {
 	content: 'NIP';
 	font-size: 9px;
 	font-style: italic;
@@ -80,7 +76,7 @@
 	top: -$s-size;
 }
 
-#value::after {
+#value:before {
 	content: 'KWOTA ZADŁUŻENIA';
 	font-size: $font-size-xsmall;
 	font-style: italic;
@@ -90,7 +86,7 @@
 	top: -$s-size;
 }
 
-#address::after {
+#address:before {
 	content: 'ADRES';
 	font-size: $font-size-xsmall;
 	font-style: italic;
@@ -101,7 +97,7 @@
 	color: $light-grey;
 }
 
-#docType::after {
+#docType:before {
 	content: 'RODZAJ/TYP DOKUMENTU STANOWIĄCY PODSTAWĘ DLA WIERZYTELNOŚCI';
 	font-size: 0.9rem;
 	color: $light-grey;
@@ -117,7 +113,7 @@
 #price {
 	width: 20%;
 }
-#price::after {
+#price:before {
 	content: 'CENA ZADŁUŻENIA';
 	font-size: $font-size-xsmall;
 	font-style: italic;
@@ -129,7 +125,7 @@
 #number {
 	width: 40%;
 }
-#number::after {
+#number:before {
 	content: 'NUMBER';
 	font-size: $font-size-xsmall;
 	font-style: italic;
@@ -138,6 +134,4 @@
 	left: 0;
 	top: -$s-size;
 }
-// #name,#value,#address,#price,#number {
-// 	border: 1px solid black;
-// }
+
