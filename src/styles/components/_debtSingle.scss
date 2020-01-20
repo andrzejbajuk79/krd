@@ -58,7 +58,7 @@
 
 #name:before {
 	content: 'DŁUŻNIK';
-	font-size: 9px;
+	font-size: $font-size-xsmall;
 	font-style: italic;
 	color: $light-grey;
 	position: absolute;
@@ -68,7 +68,7 @@
 
 #nip:before {
 	content: 'NIP';
-	font-size: 9px;
+	font-size: $font-size-xsmall;
 	font-style: italic;
 	color: $light-grey;
 	position: absolute;
@@ -134,4 +134,3 @@
 	left: 0;
 	top: -$s-size;
 }
-
