@@ -14,60 +14,51 @@ import {
 class App extends Component {
 	state = {
 		value: '',
-		errorMessage: '',
 		loading: 'true',
 		debtsList: [],
-		initialDebtsList: [],
-		debtsCount: null,
-		data: []
+		debtsCount: null
 	};
 
 	updateInputValue = e => {
 		const value = e.target.value;
-		if (!(value.legth === 0 || value.match(/^\s+|\s+$/g, ''))) {
-			this.setState({ value });
+		if (!value.match(/^\s+|\s+$/g, '')) {
+			this.setState({ value: e.target.value });
 		}
 	};
+
 	onSubmit = e => {
 		e.preventDefault();
-		if (this.state.value.length > 2) {
-			this.setState(
-				{
-					loading: false
-				},
-				() => {
-					fetch(DebtsUrlFiltered, {
-						method: 'POST',
-						headers: {
-							Accept: 'application/json',
-							'Content-Type': 'application/json'
-						},
-						body: JSON.stringify(this.state.value)
-						// body: JSON.stringify(this.state.query)
+		this.setState(
+			{
+				loading: false
+			},
+			() => {
+				fetch(DebtsUrlFiltered, {
+					method: 'POST',
+					headers: {
+						Accept: 'application/json',
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(this.state.value)
+					// body: JSON.stringify(this.state.query)
+				})
+					.then(res => {
+						return res.clone().json();
 					})
-						.then(res => {
-							return res.clone().json();
-						})
-						.then(data => {
-							this.setState({
-								loading: true,
-								debtsList: data
-							});
-						})
-						.catch(error => {
-							this.setState({
-								loading: true
-							});
-							console.log('error3', error);
+					.then(data => {
+						this.setState({
+							loading: true,
+							debtsList: data
 						});
-				}
-			);
-		} else {
-			alert('Min 3 znaki')
-		// 	<Alert color="secondary">
-		// 	This is a secondary alert — check it out!
-		// </Alert>
-		}
+					})
+					.catch(error => {
+						this.setState({
+							loading: true
+						});
+						console.log('error3', error);
+					});
+			}
+		);
 	};
 	componentDidMount() {
 		fetch(DebtsUrlCount)
