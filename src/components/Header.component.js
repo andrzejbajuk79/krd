@@ -11,8 +11,8 @@ const Header = props => (
 						<input
 							minLength="3"
 							name="search"
-							value={props.query}
-							onChange={e => props.setFilter(e)}
+							onChange={e => props.updateInputValue(e)}
+							value={props.value}
 							className="header-form__input"
 							type="text"
 							placeholder="Numer sprawy, Nazwa, NIP"

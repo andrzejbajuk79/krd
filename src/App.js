@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
-// import './App.css';
+
 import './styles/styles.scss';
-import DebtsList from './components/debtsList.jcomponent';
-import Header from './components/Header.jcomponent';
-import LoadingSpinner from './components/LoadingSpinner.jcomponent';
+import DebtsList from './components/debtsList.component';
+import Header from './components/Header.component';
+import LoadingSpinner from './components/LoadingSpinner.component';
 
 import {
 	DebtsUrlCount,
@@ -13,54 +13,61 @@ import {
 
 class App extends Component {
 	state = {
+		value: '',
+		errorMessage: '',
 		loading: 'true',
-		query: '',
 		debtsList: [],
 		initialDebtsList: [],
 		debtsCount: null,
 		data: []
 	};
 
-	componentWillMount(prevState, prevProps) {
-
-	}
-	setFilter = e => {
-		this.setState({
-			query: e.target.value
-		});
+	updateInputValue = e => {
+		const value = e.target.value;
+		if (!(value.legth === 0 || value.match(/^\s+|\s+$/g, ''))) {
+			this.setState({ value });
+		}
 	};
 	onSubmit = e => {
 		e.preventDefault();
-		this.setState(
-			{
-				loading: false
-			},
-			() => {
-				fetch(DebtsUrlFiltered, {
-					method: 'POST',
-					headers: {
-						Accept: 'application/json',
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify(this.state.query)
-				})
-					.then(res => {
-						return res.clone().json();
+		if (this.state.value.length > 2) {
+			this.setState(
+				{
+					loading: false
+				},
+				() => {
+					fetch(DebtsUrlFiltered, {
+						method: 'POST',
+						headers: {
+							Accept: 'application/json',
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify(this.state.value)
+						// body: JSON.stringify(this.state.query)
 					})
-					.then(data => {
-						this.setState({
-							loading: true,
-							debtsList: data
+						.then(res => {
+							return res.clone().json();
+						})
+						.then(data => {
+							this.setState({
+								loading: true,
+								debtsList: data
+							});
+						})
+						.catch(error => {
+							this.setState({
+								loading: true
+							});
+							console.log('error3', error);
 						});
-					})
-					.catch(error => {
-						this.setState({
-							loading: true
-						});
-						console.log('error3', error);
-					});
-			}
-		);
+				}
+			);
+		} else {
+			alert('Min 3 znaki')
+		// 	<Alert color="secondary">
+		// 	This is a secondary alert — check it out!
+		// </Alert>
+		}
 	};
 	componentDidMount() {
 		fetch(DebtsUrlCount)
@@ -85,14 +92,17 @@ class App extends Component {
 	}
 	render() {
 		const { debtsCount, loading } = this.state;
+
 		return (
 			<Fragment>
 				<Header
-					query={this.query}
-					setFilter={this.setFilter}
+					value={this.state.value}
+					updateInputValue={this.updateInputValue}
+					// setFilter={this.setFilter}
 					onSubmit={this.onSubmit}
 					total={debtsCount}
 				/>
+				<div>{this.state.errorMessage}</div>
 				{!loading ? (
 					<LoadingSpinner />
 				) : (
